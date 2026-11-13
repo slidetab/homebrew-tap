@@ -1,8 +1,9 @@
 cask "slidetab" do
   version "1.0"
-  sha256 "e3ebaa16dd9d9b9fc107c42183fb6cf9d22927e1af03dbbdfa0ccc38e4e4ac31"
+  sha256 "efea505dc55e9ddd630138f844d3f775cb74a0475d85dcf757feb045ac31a2e8"
 
-  url "https://slidetab.app/download/SlideTab.dmg"
+  # Versioned artifact so an uploaded newer DMG can never break `brew install` with a checksum mismatch.
+  url "https://slidetab.app/download/SlideTab-#{version}.dmg"
   name "SlideTab"
   desc "Tactile trackpad window & app switcher with Force Touch haptics"
   homepage "https://slidetab.app"
@@ -18,10 +19,16 @@ cask "slidetab" do
 
   app "SlideTab.app"
 
-  uninstall quit: "com.slidetab.macos"
+  uninstall quit:           "com.slidetab.macos",
+            login_item:     "SlideTab",
+            launchctl:      "com.slidetab.macos"
 
+  # `brew uninstall --zap` removes everything, including the trial anchors that a plain uninstall deliberately keeps.
   zap trash: [
     "~/Library/Preferences/com.slidetab.macos.plist",
     "~/Library/Saved Application State/com.slidetab.macos.savedState",
+    "~/Library/Application Support/com.slidetab.macos",
+    "~/Library/Caches/com.slidetab.macos",
+    "~/Library/Logs/SlideTab",
   ]
 end
