@@ -2,8 +2,8 @@
 # frozen_string_literal: true
 
 cask "slidetab" do
-  version "1.9"
-  sha256 "5c49b57f9e7a52b46e7683efcb0987d7576527cc0090af56eef2562bbf2432bd"
+  version "1.9.1"
+  sha256 "4ecea19663c9e8383e5cf56d467c7a7d145b5fbbd5c955839dbd1bb5e850d72a"
 
   # Versioned artifact so an uploaded newer DMG can never break `brew install` with a checksum mismatch.
   url "https://slidetab.app/download/SlideTab-#{version}.dmg"
