@@ -1,4 +1,4 @@
-# SlideTab — Official Homebrew Tap
+# SlideTab Homebrew Tap
 
 Install [SlideTab](https://slidetab.app) via [Homebrew](https://brew.sh):
 
